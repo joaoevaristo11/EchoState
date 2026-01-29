@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  # SERVIÇO JAVA
+  backend:
+    build: ./backend
+    ports:
+      - "8080:8080"
+    networks:
+      - monitoring-net
+
+  # SERVIÇO PYTHON
+  agent:
+    build: ./agent
+    depends_on:
+      - backend
+    environment:
+      # Diz ao Python que o servidor chama-se "backend" e não "localhost"
+      - SERVER_URL=http://backend:8080/api/metrics
+    networks:
+      - monitoring-net
+
+# Rede privada
+networks:
+  monitoring-net:
+    driver: bridge
