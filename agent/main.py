@@ -21,15 +21,15 @@ def receive_data():
             status = "DOWN"
 
     except:
-        latency = 0
+        latency = -1  # -1 indica erro/timeout
         status = "DOWN"
 
     # 2. Monta o Pacote de Dados (Payload)
     payload = {
-        "hostName": platform.node(),
-        "ipAddress": "127.0.0.1", # Hardcoded por enquanto
-        "targetService": TARGET_HOST,
-        "latencyMs": latency,
+        "host_name": platform.node(),
+        "ip_address": "127.0.0.1", # Hardcoded por enquanto
+        "target_service": TARGET_HOST,
+        "latency_ms": latency,
         "status": status,
         "timestamp": datetime.now().isoformat()
     }
@@ -39,7 +39,7 @@ def receive_data():
 
 def send_data():
     data = receive_data()
-    print(f"📤 A enviar dados de {data['hostName']}...")
+    print(f"📤 A enviar dados de {data['host_name']}...")
 
     try:
         response = requests.post(SERVER_URL, json=data)

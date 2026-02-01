@@ -5,7 +5,7 @@
 ![Java](https://img.shields.io/badge/Java-17-orange)
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.5-green)
 ![Python](https://img.shields.io/badge/Python-3.x-blue)
-![Status](https://img.shields.io/badge/Status-Phase_1_(MVP)-yellow)
+![Status](https://img.shields.io/badge/Status-Phase_4_Complete-success)
 
 ## 📖 Overview
 
@@ -90,15 +90,27 @@ JSON
   "timestamp": "2026-01-28T10:00:00"
 }
 
-🗺️ Roadmap
+## 📖 Documentação Completa
 
-    [x] Phase 1: MVP - Basic Agent-Server communication (HTTP/JSON).
+Para um guia detalhado de setup e utilização, consulte o **[SETUP_GUIDE.md](SETUP_GUIDE.md)**
 
-    [ ] Phase 2: Dockerization - Containerize Backend and Agent with Docker Compose.
+O guia inclui:
+- 🏗️ Arquitetura completa com diagramas
+- 🚀 Passo-a-passo de instalação
+- 📊 Configuração do Grafana em detalhe
+- 📈 Interpretação dos gráficos e métricas
+- 🔧 Troubleshooting comum
+- 🎓 Conceitos aprendidos
 
-    [ ] Phase 3: Persistence - Integrate InfluxDB to store time-series data.
+## 🗺️ Roadmap
 
-    [ ] Phase 4: Visualization - Create Grafana Dashboards for real-time monitoring.
+- [x] **Phase 1:** MVP - Basic Agent-Server communication (HTTP/JSON)
+- [x] **Phase 2:** Dockerization - Containerize Backend and Agent with Docker Compose
+- [x] **Phase 3:** Persistence - Integrate InfluxDB to store time-series data
+- [x] **Phase 4:** Visualization - Create Grafana Dashboards for real-time monitoring
+- [ ] **Phase 5:** Multi-region deployment with multiple agents
+- [ ] **Phase 6:** Alerting and incident management
+- [ ] **Phase 7:** Authentication and API security
 
 👤 Author
 

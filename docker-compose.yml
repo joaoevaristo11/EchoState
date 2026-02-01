@@ -20,6 +20,35 @@ services:
     networks:
       - monitoring-net
 
+  # SERVIÇO 3: A Base de Dados (InfluxDB)
+  influxdb:
+    image: influxdb:2.7
+    ports:
+      - "8086:8086"
+    environment:
+      # Configuração Inicial Automática
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=admin
+      - DOCKER_INFLUXDB_INIT_PASSWORD=admin12345678  # Senha (min 8 chars)
+      - DOCKER_INFLUXDB_INIT_ORG=echostate           # A tua "Organização"
+      - DOCKER_INFLUXDB_INIT_BUCKET=metrics_bucket   # O "Balde" onde guardamos dados
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=my-super-secret-auth-token
+    networks:
+      - monitoring-net
+
+  # SERVIÇO 4: O Dashboard Visual (Grafana)
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    depends_on:
+      - influxdb
+    networks:
+      - monitoring-net
+
 # Rede privada
 networks:
   monitoring-net:
